@@ -7,14 +7,14 @@ https://vstsagentpackage.azureedge.net/agent/3.234.0/vsts-agent-linux-x64-3.234.
 ```
 
 ```
-~/myagent$ tar zxvf ~/Downloads/vsts-agent-linux-x64-3.234.0.tar.gz
+tar zxvf ~/Downloads/vsts-agent-linux-x64-3.234.0.tar.gz
 ```
 
 ```
-~/myagent$ ./config.sh
+ ./config.sh
 ```
 ```
-~/myagent$ ./run.sh
+ ./run.sh
 ```
 
 ```
