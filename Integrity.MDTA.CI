@@ -1,0 +1,72 @@
+parameters:
+  - name: SkipCI 
+    type: boolean 
+    default: true 
+  - name: Debug 
+    type: boolean 
+    default: false
+  - name: workingDirectoryFirst
+    type: string
+  - name: gulpFileFirst
+    type: string
+  - name: workingDirectorySec
+    type: string
+  - name: gulpFileSec
+    type: string
+  - name: rootFolderOrFile
+    type: string
+  - name: includeRootFolder
+    type: boolean
+  - name: pathToSolutionDir
+    type: string
+  - name: config
+    type: string
+  - name: solutionPath
+    type: string
+  - name: nugetConfigPath
+    type: string
+  - name: feedsToUse
+    type: string
+  - name: msbuildConf
+    type: string
+  - name: BuildPlatform
+    type: string
+  - name: msbuildArgs
+    type: string
+  - name: pathToFiles
+    type: string
+  - name: targetFolder
+    type: string
+
+jobs:
+  - job: WebBuild
+    displayName: WebBuild
+    pool: 
+      name: mdta-build-pool
+      
+    timeoutInMinutes: 120
+    steps: 
+    - checkout: self
+    - checkout: templates
+    - template: 'tasks/MDTAIntegrity_taskgroup.yaml@templates'
+      parameters:
+        msbuildArgs:  ${{ parameters.msbuildArgs }}
+        msbuildConf:  ${{ parameters.msbuildConf }}
+        BuildPlatform:  ${{ parameters.BuildPlatform }}
+        solutionPath:  ${{ parameters.solutionPath }}
+        pathToSolutionDir:  ${{ parameters.pathToSolutionDir }}
+        config:  ${{ parameters.config }}
+        nugetConfigPath:  ${{ parameters.nugetConfigPath }}
+        rootFolderOrFile:  ${{ parameters.rootFolderOrFile }}
+        includeRootFolder:  ${{ parameters.includeRootFolder }}
+        feedsToUse:  ${{ parameters.feedsToUse }}
+        workingDirectoryFirst:  ${{ parameters.workingDirectoryFirst }}
+        gulpFileFirst:  ${{ parameters.gulpFileFirst }}
+        workingDirectorySec:  ${{ parameters.workingDirectorySec }}
+        gulpFileSec:  ${{ parameters.gulpFileSec }}
+        pathToFiles:  ${{ parameters.pathToFiles }}
+        targetFolder:  ${{ parameters.targetFolder }}
+
+
+
+      
