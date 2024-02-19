@@ -1,0 +1,47 @@
+steps:
+- task: UseDotNet@2
+  displayName: 'Use .NET Core sdk 2.2.x'
+  inputs:
+    version: 2.1.x
+
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  inputs:
+    command: 'build'
+    projects: '**/*.sln'
+
+
+parameters:
+  - name: feed
+    type: string
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet publish'
+  inputs:
+    command: 'publish'
+    vstsFeed: ${{ parameters.feed }}
+    arguments: '-o $(Build.ArtifactStagingDirectory)/Output'
+    projects: '**/*.sln'
+    zipAfterPublish: true
+    modifyOutputPath: true
+    publishWebProjects: false
+
+parameters:
+  - name: feed
+    type: string
+  - name: config
+    type: string
+
+
+steps:
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  inputs:
+    command: 'restore'
+    feedsToUse: config
+    nugetConfigPath: '${{ parameters.config }}'
+    projects: '**/*.sln'
+    includeNuGetOrg: true
