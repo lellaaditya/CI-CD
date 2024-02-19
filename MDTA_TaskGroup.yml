@@ -1,0 +1,569 @@
+parameters:
+  - name: workingDirectoryFirst
+    type: string
+  - name: gulpFileFirst
+    type: string
+  - name: workingDirectorySec
+    type: string
+  - name: gulpFileSec
+    type: string
+  - name: rootFolderOrFile
+    type: string
+  - name: includeRootFolder
+    type: boolean
+  - name: pathToSolutionDir
+    type: string
+  - name: config
+    type: string
+  - name: solutionPath
+    type: string
+  - name: nugetConfigPath
+    type: string
+  - name: feedsToUse
+    type: string
+  - name: msbuildConf
+    type: string
+  - name: BuildPlatform
+    type: string
+  - name: msbuildArgs
+    type: string
+  - name: pathToFiles
+    type: string
+  - name: targetFolder
+    type: string
+
+
+steps:
+  - template: 'steps/MDTAUpdVer.yaml@templates'
+  
+  - template: 'steps/npmInstall.yaml@templates'
+    parameters:
+      workingDirectory:  ${{ parameters.workingDirectoryFirst }}
+  
+  - template: 'steps/GulpCmpile.yaml@templates'
+    parameters:
+      workingDirectory:  ${{ parameters.workingDirectoryFirst }}
+      gulpFile:  ${{ parameters.gulpFileFirst }}
+  
+  - template: 'steps/NuGet_restore.yaml@templates'
+    parameters:
+      pathToSolutionDir:  ${{ parameters.pathToSolutionDir }}
+      config:  ${{ parameters.config }}
+      solutionPath:  ${{ parameters.solutionPath }}
+      nugetConfigPath:  ${{ parameters.nugetConfigPath }}
+      feedsToUse:  ${{ parameters.feedsToUse }}
+  
+  - template: 'steps/VisualStudio_Build.yaml@templates'
+    parameters:
+      solutionPath: ${{ parameters.solutionPath }}
+      msbuildConf:  ${{ parameters.msbuildConf }}
+      BuildPlatform:  ${{ parameters.BuildPlatform }}
+      msbuildArgs:  ${{ parameters.msbuildArgs }}
+
+  - template: 'steps/NPM.yaml@templates'
+    parameters:
+      workingDirectory:  ${{ parameters.workingDirectorySec}}
+  
+  - template: 'steps/GulpBuild.yaml@templates'
+    parameters:
+      workingDirectory:  ${{ parameters.workingDirectorySec }}
+      gulpFile:  ${{ parameters.gulpFileSec }}
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\ExternalWebAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.ExternalWebAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\InternalWebAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.InternalWebAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\WebAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.WebAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\TollHostWebAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.TollHostWebAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\TollPostingWebAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.TollPostingWebAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\PostTollRateScheduleAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.PostTollRateScheduleAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\IVRWebAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.IVRWebAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\TwilioWebhookManager_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.TwilioWebhookManager'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\MVAStoreWebAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MVAStoreWebAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\RetailerWebAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.RetailerWebAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\MobileAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MobileAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\WebLayer\WebUI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.WebUI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\WebLayer\ExternalWebUI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.ExternalWebUI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\WebLayer\MobileUI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MobileUI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\AppLayer\SMSWebAPI_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.SMSWebAPI'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSAccountAgingTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSAccountAgingTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSAchReplenishmentTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSAchReplenishmentTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSCreditCardExpirationTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSCreditCardExpirationTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSCreditCardReplenishmentTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSCreditCardReplenishmentTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDocumentManagementProcessTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDocumentManagementProcessTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDocumentManagementTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDocumentManagementTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDiscountPlanPostUsageSupplementalTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDiscountPlanPostUsageSupplementalTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSFeeTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSFeeTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSGlobalSearchTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSGlobalSearchTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSNotificationDocumentGeneratorTask\AMSNotificationDocumentGeneratorTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSNotificationDocumentGeneratorTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSNotificationTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSNotificationTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSNotificationBouncedTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSNotificationBouncedTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSNotificationSMSTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSNotificationSMSTask'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSNotificationBouncedTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSRefundTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSRefundTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSStatementDeliveryTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSStatementDeliveryTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSTracerTicketMaxReassigneeTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSTracerTicketMaxReassigneeTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSViolationTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSViolationTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSCloseTemporaryAccountTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSCloseTemporaryAccountTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSTagStatusValidationTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSTagStatusValidationTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDMVOutOfStateLookupTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDMVOutOfStateLookupTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\CCUReferralAndDataExchangeTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.CCUReferralAndDataExchangeTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSFinancialSystemTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSFinancialSystemTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSTripMessageImageImportTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSTripMessageImageImportTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSICCEvidencePackageTripMessageImageTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSICCEvidencePackageTripMessageImageTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSPostTollRateScheduleTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSPostTollRateScheduleTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSAddressStandardizationTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSAddressStandardizationTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDiscountPlanUnusedFeeTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDiscountPlanUnusedFeeTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDMVResponseAccountCreationLESTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDMVResponseAccountCreationLESTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDMVResponseAccountCreationMVATask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDMVResponseAccountCreationMVATask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDMVResponseAccountCreationOOSTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDMVResponseAccountCreationOOSTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSNOTDTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSNOTDTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\IAGTollHostAPIResponseImportTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.IAGTollHostAPIResponseImportTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\CourtNotificationTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.CourtNotificationTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\CourtEvidentiaryPackageTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.CourtEvidentiaryPackageTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSBestPassStatementTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSBestPassStatementTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSBestPassTagStatusTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSBestPassTagStatusTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSBestPassTransTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSBestPassTransTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDMVLookupRequestTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDMVLookupRequestTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDMVLookupResponseTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDMVLookupResponseTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\LockBoxFileProcessTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.LockBoxFileProcessTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSDiscountPlanAgingTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSDiscountPlanAgingTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSMVARegistrationHoldTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSMVARegistrationHoldTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSTripCorrectionsTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSTripCorrectionsTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSTranspondersChargeTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSTranspondersChargeTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSTransponderReplacementFeeTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSTransponderReplacementFeeTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSNegativeSuspendedTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSNegativeSuspendedTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSCreateManualUnpaidAccountTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSCreateManualUnpaidAccountTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\BPVehicleMasterListExport\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.BPVehicleMasterListExport'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\Workflows\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.Workflows'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\WorkflowPolicy\PolicyLibrary\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.PolicyLibrary'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\SQLSourceControl'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.SQLSourceControl'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\IAGSolution\IAGWindowsService\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.IAGWindowsService'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\IAGSolution\IAGServiceAdminUtilities\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.IAGServiceAdminUtilities'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\IAGSolution\IAGFileCleanupTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.IAGFileCleanupTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSTranspondersChargeTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSTranspondersChargeTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\LiveChat\LiveChat_Deploy'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.LiveChat'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSInactiveAccountCloseandNotifyTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSInactiveAccountCloseandNotifyTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSAutoReplenishmentPaymentTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSAutoReplenishmentPaymentTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSRoadsideTollCollectionSystemTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSRoadsideTollCollectionSystemTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSPBPPaymentTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSPBPPaymentTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\BPVehiclePlateUpdateTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.BPVehiclePlateUpdateTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\CCUPaymentProcessorTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.CCUPaymentProcessorTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\MHDocumentExportTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MHDocumentExportTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\MHDocumentNOTDExportTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MHDocumentNOTDExportTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\MHDocumentStatementExportTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MHDocumentStatementExportTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\MHNixieUpdateTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MHNixieUpdateTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\IAGNonTollCreditCardProcesorTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.IAGNonTollCreditCardProcesorTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\MHACKUpdateTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MHACKUpdateTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\MHErrorUpdateTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MHErrorUpdateTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSTagStatusValidationIncrTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSTagStatusValidationIncrTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSTollPostingAcknowledgementTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSTollPostingAcknowledgementTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\MHNcoaUpdateTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MHNcoaUpdateTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSMVARegistrationHoldReleaseTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSMVARegistrationHoldReleaseTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSUnFreezCorrespondenceTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSUnFreezCorrespondenceTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSUnIdentifiedAccountCreationLESTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSUnIdentifiedAccountCreationLESTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSUnIdentifiedAccountCreationMVATask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSUnIdentifiedAccountCreationMVATask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSUnIdentifiedAccountCreationOOSTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSUnIdentifiedAccountCreationOOSTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSOrphanTransactionProcessorTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSOrphanTransactionProcessorTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSImageCertificationRejectedTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSImageCertificationRejectedTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSCloseInactiveAccountTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSCloseInactiveAccountTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\MHEmailBounceTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MHEmailBounceTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\MHDocumentCitationExportTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.MHDocumentCitationExportTask'
+
+  - template: "steps/copyfiles.yaml@templates"
+    parameters:
+      pathToFiles: '${{ parameters.pathToFiles }}\ScheduledTasks\AMSPurgeEvidencePackagesTask\bin\Release'
+      targetFolder: '${{ parameters.targetFolder }}\Integrity.sprint.AMSPurgeEvidencePackagesTask'
+
+  - template: 'steps/archiveFiles.yaml@templates'
+    parameters:
+      rootFolderOrFile:  ${{ parameters.rootFolderOrFile }}
+      includeRootFolder: ${{ parameters.includeRootFolder }}
+  
+  - template: 'steps/publishArtifact.yaml@templates'
+  
