@@ -1,0 +1,1267 @@
+#AMSAddressStandardizationTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSAddressStandardizationTask\tcore.AMSAddressStandardizationTask.exe.config'
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+
+#AMSDMVLookupResponseTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSDMVLookupRequestTask\tcore.AMSDMVLookupRequestTask.exe.config'
+$FileServerType = 'FTP'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerType"]')
+$targetNode.SetAttribute('value',"$FileServerType")
+$xml.Save($filePath)
+
+
+#AMSDMVOutOfStateLookupTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSDMVOutOfStateLookupTask\tcore.AMSDMVOutOfStateLookupTask.exe.config'
+$FileServerType = 'SFTP'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerType"]')
+$targetNode.SetAttribute('value',"$FileServerType")
+$xml.Save($filePath)
+$FileServerUser = 'ro_md_mdta'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwdAMSDMVOutOfStateLookupTask = 'gjrxch5rL1ne'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwdAMSDMVOutOfStateLookupTask")
+$xml.Save($filePath)
+$FileServerIncomingDir = '/ToFTP/'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerIncomingDir"]')
+$targetNode.SetAttribute('value',"$FileServerIncomingDir")
+$xml.Save($filePath)
+$FileServerOutgoingDir = '/FromFTP/'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerOutgoingDir"]')
+$targetNode.SetAttribute('value',"$FileServerOutgoingDir")
+$xml.Save($filePath)
+$FileServerAddress = 'sftp.duncansolutions.com.disabled'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+
+#AMSFinancialSystemTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSFinancialSystemTask\tcore.AMSFinancialSystemTask.exe.config'
+$FileServerType = 'FTP'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerType"]')
+$targetNode.SetAttribute('value',"$FileServerType")
+$xml.Save($filePath)
+$FileServerPwdFinancialSystemTask = 'Transc0reTransc0re'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwdFinancialSystemTask")
+$xml.Save($filePath)
+$FileServerIncomingDir = '/'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerIncomingDir"]')
+$targetNode.SetAttribute('value',"$FileServerIncomingDir")
+$xml.Save($filePath)
+$emailFromAddress = 'NoReply@transcore.com'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+
+#AMSMVARegistrationHoldTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSMVARegistrationHoldTask\tcore.AMSMVARegistrationHoldTask.exe.config'
+$FileServerType = 'FTP'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerType"]')
+$targetNode.SetAttribute('value',"$FileServerType")
+$xml.Save($filePath)
+$FileServerPwdAMSMVARegistrationHoldTask = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerInPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwdAMSMVARegistrationHoldTask")
+$xml.Save($filePath)
+$FileServerOutUser = 'transcore'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerOutUser"]')
+$targetNode.SetAttribute('value',"$FileServerOutUser")
+$xml.Save($filePath)
+$FileServerIncomingDir = '/RegistrationHoldIncoming/'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerIncomingDir"]')
+$targetNode.SetAttribute('value',"$FileServerIncomingDir")
+$xml.Save($filePath)
+$FileServerOutgoingDir = '/RegistrationHoldOutgoing/'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerOutgoingDir"]')
+$targetNode.SetAttribute('value',"$FileServerOutgoingDir")
+$xml.Save($filePath)
+$FileServerOutPwd = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerOutPwd"]')
+$targetNode.SetAttribute('value',"$FileServerOutPwd")
+$xml.Save($filePath)
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+
+#AMSNotificationDocumentGeneratorTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSNotificationDocumentGeneratorTask\tcore.AMSNotificationDocumentGeneratorTask.exe.config'
+$notificationFromAddress = 'DoNotReplyQA@driveezmd.com'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="notificationFromAddress"]')
+$targetNode.SetAttribute('value',"$notificationFromAddress")
+$xml.Save($filePath)
+$reportServerUrl = 'http://MDSTGDB02.cscmd.local:8080/reportserver'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="reportServerUrl"]')
+$targetNode.SetAttribute('value',"$reportServerUrl")
+$xml.Save($filePath)
+$reportExecutionServiceUrl = 'http://MDSTGDB02.cscmd.local:8080/ReportServer/ReportExecution2005.asmx'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="reportExecutionServiceUrl"]')
+$targetNode.SetAttribute('value',"$reportExecutionServiceUrl")
+$xml.Save($filePath)
+$networkDomain = 'cscmd'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="networkDomain"]')
+$targetNode.SetAttribute('value',"$networkDomain")
+$xml.Save($filePath)
+$networkUserId = 'Srv-dbreports'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="networkUserId"]')
+$targetNode.SetAttribute('value',"$networkUserId")
+$xml.Save($filePath)
+$networkUserPass = '4D4T?Jrr@L`F#Swacdh?'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="networkUserPass"]')
+$targetNode.SetAttribute('value',"$networkUserPass")
+$xml.Save($filePath)
+$isPriority = 'true'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="isPriority"]')
+$targetNode.SetAttribute('value',"$isPriority")
+$xml.Save($filePath)
+$documentServerLocation = '\\mdstgapp03.cscmd.local\IntegrityUploadedFiles'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="documentServerLocation"]')
+$targetNode.SetAttribute('value',"$documentServerLocation")
+$xml.Save($filePath)
+
+#AMSNotificationSMSTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSNotificationSMSTask\tcore.AMSNotificationSMSTask.exe.config'
+$notificationFromAddress = 'DoNotReplyQA@driveezmd.com'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="notificationFromAddress"]')
+$targetNode.SetAttribute('value',"$notificationFromAddress")
+$xml.Save($filePath)
+
+#AMSNotificationTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSNotificationTask\tcore.AMSNotificationTask.exe.config'
+$isPriority = 'true'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="isPriority"]')
+$targetNode.SetAttribute('value',"$isPriority")
+$xml.Save($filePath)
+
+#AMSOrphanTransactionProcessorTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSOrphanTransactionProcessorTask\tcore.AMSOrphanTransactionProcessorTask.exe.config'
+$LogEvents = 'true'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="LogEvents"]')
+$targetNode.SetAttribute('value',"$LogEvents")
+$xml.Save($filePath)
+
+#AMSTagStatusValidationIncrTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSTagStatusValidationIncrTask\tcore.AMSTagStatusValidationIncrTask.exe.config'
+$FileServerIncomingDir = '/TVL/'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerIncomingDir"]')
+$targetNode.SetAttribute('value',"$FileServerIncomingDir")
+$xml.Save($filePath)
+$FileServerAddress = '127.0.0.1'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+
+#AMSTagStatusValidationTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSTagStatusValidationTask\tcore.AMSTagStatusValidationTask.exe.config'
+$FileServerIncomingDir = '/TVL/'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerIncomingDir"]')
+$targetNode.SetAttribute('value',"$FileServerIncomingDir")
+$xml.Save($filePath)
+$FileServerAddress = '127.0.0.1'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+
+#AMSTripCorrectionsTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSTripCorrectionsTask\tcore.AMSTripCorrectionsTask.exe.config'
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+
+#AMSPriorityNotificationTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSPriorityNotificationTask\tcore.AMSNotificationTask.exe.config'
+$isPriority = 'true'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="isPriority"]')
+$targetNode.SetAttribute('value',"$isPriority")
+$xml.Save($filePath)
+
+#AMSTracerTicketMaxReassigneeTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSTracerTicketMaxReassigneeTask\tcore.AMSTracerTicketMaxReassigneeTask.exe.config'
+$TaskID = '38'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="TaskID"]')
+$targetNode.SetAttribute('value',"$TaskID")
+$xml.Save($filePath)
+
+#AMSTripMessageImageImportTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSTripMessageImageImportTask\tcore.AMSTripMessageImageImportTask.exe.config'
+$TripMsgFileImageFolderIncoming = '\\MDTRAINAPP01.cscmd.local\IncomingTripMsgFile'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="TripMsgFileImageFolderIncoming"]')
+$targetNode.SetAttribute('value',"$TripMsgFileImageFolderIncoming")
+$xml.Save($filePath)
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+
+#AMSUnFreezCorrespondenceTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSUnFreezCorrespondenceTask\tcore.AMSUnFreezCorrespondenceTask.exe.config'
+$TaskID = '40'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="TaskID"]')
+$targetNode.SetAttribute('value',"$TaskID")
+$xml.Save($filePath)
+$LogEvents = 'true'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="LogEvents"]')
+$targetNode.SetAttribute('value',"$LogEvents")
+$xml.Save($filePath)
+
+#AMSVerraPaymentImportTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.AMSVerraPaymentImportTask\tcore.AMSVerraPaymentImportTask.exe.config'
+$emailFrom = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFrom"]')
+$targetNode.SetAttribute('value',"$emailFrom")
+$xml.Save($filePath)
+$emailTo = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailTo"]')
+$targetNode.SetAttribute('value',"$emailTo")
+$xml.Save($filePath)
+
+#BPVehicleMasterListExport
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.BPVehicleMasterListExport\tcore.BPVehicleMasterListExport.exe.config'
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+$SaveDirectory = 'C:\CAMS\AMSBestPassVehicleMasterList'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="SaveDirectory"]')
+$targetNode.SetAttribute('value',"$SaveDirectory\out\")
+$xml.Save($filePath)
+$ArchiveDirectory = 'C:\CAMS\AMSBestPassVehicleMasterList'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive")
+$xml.Save($filePath)
+$FailedDirectory = 'C:\CAMS\AMSBestPassVehicleMasterList'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure")
+$xml.Save($filePath)
+
+#BPVehiclePlateUpdateTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.BPVehiclePlateUpdateTask\tcore.BPVehiclePlateUpdateTask.exe.config'
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+$SaveDirectory = 'C:\CAMS\AMSBestVehiclePlateUpdate'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="SaveDirectory"]')
+$targetNode.SetAttribute('value',"$SaveDirectory\in\")
+$xml.Save($filePath)
+$ArchiveDirectory = 'C:\CAMS\AMSBestVehiclePlateUpdate'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive")
+$xml.Save($filePath)
+$FailedDirectory = 'C:\CAMS\AMSBestVehiclePlateUpdate'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure")
+$xml.Save($filePath)
+
+
+#CAURequestUpdateTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.CAURequestUpdateTask\tcore.CAURequestUpdateTask.exe.config'
+$TaskID = '22'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="TaskID"]')
+$targetNode.SetAttribute('value',"$TaskID")
+$xml.Save($filePath)
+$CAUServiceURL = 'http://localhost:5657'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="CAUServiceURL"]')
+$targetNode.SetAttribute('value',"$CAUServiceURL")
+$xml.Save($filePath)
+$DaysBackRequest = '7'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="DaysBackRequest"]')
+$targetNode.SetAttribute('value',"$DaysBackRequest")
+$xml.Save($filePath)
+
+#CAUSubscriptionTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.CAUSubscriptionTask\tcore.CAUSubscriptionTask.exe.config'
+$TaskID = '22'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="TaskID"]')
+$targetNode.SetAttribute('value',"$TaskID")
+$xml.Save($filePath)
+$CAUServiceURL = 'http://localhost:5657'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="CAUServiceURL"]')
+$targetNode.SetAttribute('value',"$CAUServiceURL")
+$xml.Save($filePath)
+
+#CCUMUPDProcessorTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.CCUMUPDProcessorTask\tcore.CCUMUPDProcessorTask.exe.config'
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+
+#CCUPaymentProcessorTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.CCUPaymentProcessorTask\tcore.CCUPaymentProcessorTask.exe.config'
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+
+#CCUReferralAndDataExchangeTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.CCUReferralAndDataExchangeTask\tcore.CCUReferralAndDataExchangeTask.exe.config'
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+$FileServerPwd = 'Transc0reTransc0re'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+
+#CourtEvidentiaryPackageTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.CourtEvidentiaryPackageTask\tcore.CourtEvidentiaryPackageTask.exe.config'
+$ArchiveDirectory = 'C:\CAMS\mailhouse\EvidenceDocumentExport'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+
+#CourtNotificationTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.CourtNotificationTask\tcore.CourtNotificationTask.exe.config'
+$emailFromAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ''
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+$DbCommandTimeout = '600'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="DbCommandTimeout"]')
+$targetNode.SetAttribute('value',"$DbCommandTimeout")
+$xml.Save($filePath)
+
+#IAGNonTollCreditCardProcesorTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.IAGNonTollCreditCardProcesorTask\tcore.IAGNonTollCreditCardProcesorTask.exe.config'
+$TaskID = '48'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="TaskID"]')
+$targetNode.SetAttribute('value',"$TaskID")
+$xml.Save($filePath)
+
+#LockBoxFileProcessTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.LockBoxFileProcessTask\tcore.LockBoxFileProcessTask.exe.config'
+$emailFromAddress = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailFromAddress"]')
+$targetNode.SetAttribute('value',"$emailFromAddress")
+$xml.Save($filePath)
+$emailToAddress = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="emailToAddress"]')
+$targetNode.SetAttribute('value',"$emailToAddress")
+$xml.Save($filePath)
+$FileServerType = 'SFTP'
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerType"]')
+$targetNode.SetAttribute('value',"$FileServerType")
+$xml.Save($filePath)
+$FileServerAddress = "10.11.182.112"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "tcoreota"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = "A$ph@lt2801"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+
+#MHACKUpdateTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHACKUpdateTask\tcore.MHACKUpdateTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+
+#MHACKUpdateCitationAttachPDFsTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHACKUpdateCitationAttachPDFsTask\tcore.MHACKUpdateTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+
+#MHACKUpdateCitationTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHACKUpdateCitationTask\tcore.MHACKUpdateTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+
+
+#MHACKUpdateNOTDAttachPDFsTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHACKUpdateNOTDAttachPDFsTask\tcore.MHACKUpdateNOTDAttachPDFsTask.exe.config'
+$FileServerAddress = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\Mailhouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\Mailhouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+
+#MHAckUpdateNOTDTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHAckUpdateNOTDTask\tcore.MHACKUpdateTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+
+#MHACKUpdateStateAvailAttachPDFsTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHACKUpdateStateAvailAttachPDFsTask\tcore.MHACKUpdateTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+
+#MHACKUpdateStateAvailTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHACKUpdateStateAvailTask\tcore.MHACKUpdateTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+
+#MHACKUpdateStatementAttachPDFsTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHACKUpdateStatementAttachPDFsTask\tcore.MHACKUpdateTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+
+#MHACKUpdateStatementTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHACKUpdateStatementTask\tcore.MHACKUpdateTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+
+#MHACKUpdateTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHACKUpdateTask\tcore.MHACKUpdateTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\MailHouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+
+#MHDocumentCitationExportTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHDocumentCitationExportTask\tcore.MHDocumentCitationExportTask.exe.config'
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\Mailhouse\DocumentExport\Citation"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+
+#MHDocumentExportTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHDocumentExportTask\tcore.MHDocumentExportTask.exe.config'
+$NcoaNixieFolder = "C:\CAMS\Mailhouse\temp\"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="NcoaNixieFolder"]')
+$targetNode.SetAttribute('value',"$NcoaNixieFolder")
+$xml.Save($filePath)
+$NocaNixieUploadFolder = "C:\CAMS\Mailhouse\temp\"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="NocaNixieUploadFolder"]')
+$targetNode.SetAttribute('value',"$NocaNixieUploadFolder")
+$xml.Save($filePath)
+
+#MHDocumentNOTDExportTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHDocumentNOTDExportTask\tcore.MHDocumentNOTDExportTask.exe.config'
+$FileServerUser = "csgmdta_dev"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\Mailhouse\DocumentExport\NOTD"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\Mailhouse\DocumentExport\NOTD"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+
+#MHDocumentStatementExportTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHDocumentStatementExportTask\tcore.MHDocumentStatementExportTask.exe.config'
+$FileServerUser = "csgmdta_dev"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\Mailhouse\DocumentExport\Statement"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+
+#MHEmailBounceTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHEmailBounceTask\tcore.MHEmailBounceTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta_dev"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = "Smok1971!"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$InDirectory = "C:\CAMS\Mailhouse\EmailBounce"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="InDirectory"]')
+$targetNode.SetAttribute('value',"$InDirectory\in\")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\Mailhouse\EmailBounce"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\Mailhouse\EmailBounce"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+
+#MHErrorUpdateTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHErrorUpdateTask\tcore.MHErrorUpdateTask.exe.config'
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta_dev"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = "Smok1971!"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$ReportsProcessingFolder = "/MDTA/REPORTS_PROCESSING_MDTA"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ReportsProcessingFolder"]')
+$targetNode.SetAttribute('value',"$ReportsProcessingFolder")
+$xml.Save($filePath)
+$InDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="InDirectory"]')
+$targetNode.SetAttribute('value',"$InDirectory\ErrorUpdate\in\")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\MailHouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\ErrorUpdate\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure")
+$xml.Save($filePath)
+
+#MHNcoaUpdateTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHNcoaUpdateTask\tcore.MHNcoaUpdateTask.exe.config'
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta_dev"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = "Smok2020!"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$InDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="InDirectory"]')
+$targetNode.SetAttribute('value',"$InDirectory\NcoaUpdate\in\")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\NcoaUpdate\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\NcoaUpdate\failure\")
+$xml.Save($filePath)
+
+#MHNixieUpdateTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHNixieUpdateTask\tcore.MHNixieUpdateTask.exe.config'
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta_dev"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = "Smok1971!"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$InDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="InDirectory"]')
+$targetNode.SetAttribute('value',"$InDirectory\NixieUpdate\in\")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\NixieUpdate\archive\")
+$xml.Save($filePath)
+$FailedDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\NixieUpdate\failure\")
+$xml.Save($filePath)
+
+#MVAStoreWebAPI
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MVAStoreWebAPI\Web.config'
+$issuer = "http://localhost:64090/"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="issuer"]')
+$targetNode.SetAttribute('value',"$issuer")
+$xml.Save($filePath)
+
+#MobileAPI
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MobileAPI\Web.config'
+$AMSExternalHostname = "localhost:229"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="AMSExternalHostname"]')
+$targetNode.SetAttribute('value',"$AMSExternalHostname")
+$xml.Save($filePath)
+$AMSExternalPath = "/"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="AMSExternalPath"]')
+$targetNode.SetAttribute('value',"$AMSExternalPath")
+$xml.Save($filePath)
+$issuer = "http://localhost:64087/"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="issuer"]')
+$targetNode.SetAttribute('value',"$issuer")
+$xml.Save($filePath)
+$CreateAccountPage = "/sign-on"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="CreateAccountPage"]')
+$targetNode.SetAttribute('value',"$CreateAccountPage")
+$xml.Save($filePath)
+
+#RetailerWebAPI
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.RetailerWebAPI\Web.config'
+$WebSiteUrl = "https://mdstgapp03.cscmd.local"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="WebSiteUrl"]')
+$targetNode.SetAttribute('value',"$WebSiteUrl")
+$xml.Save($filePath)
+$AMSRetailerHost = "mdstgapp03.cscmd.local:2206"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="AMSRetailerHost"]')
+$targetNode.SetAttribute('value',"$AMSRetailerHost")
+$xml.Save($filePath)
+$CreateAccountPage = "#/SignOn"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="CreateAccountPage"]')
+$targetNode.SetAttribute('value',"$CreateAccountPage")
+$xml.Save($filePath)
+$AddressValidationUrl = "https://mdstgapp03.cscmd.local:1337"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="AddressValidationUrl"]')
+$targetNode.SetAttribute('value',"$AddressValidationUrl")
+$xml.Save($filePath)
+$reCAPTCHAValidation = "false"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="reCAPTCHAValidation"]')
+$targetNode.SetAttribute('value',"$reCAPTCHAValidation")
+$xml.Save($filePath)
+$AMSExternalHostname = "mdstgapp03.cscmd.local:2206"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="AMSExternalHostname"]')
+$targetNode.SetAttribute('value',"$AMSExternalHostname")
+$xml.Save($filePath)
+$AMSExternalPath = "/"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="AMSExternalPath"]')
+$targetNode.SetAttribute('value',"$AMSExternalPath")
+$xml.Save($filePath)
+
+#WebAPI
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.WebAPI\Web.config'
+$issuer = "https://mdstgapp03.cscmd.local:6555/"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="issuer"]')
+$targetNode.SetAttribute('value',"$issuer")
+$xml.Save($filePath)
+$AMSExternalHostname = "localhost:229"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="AMSExternalHostname"]')
+$targetNode.SetAttribute('value',"$AMSExternalHostname")
+$xml.Save($filePath)
+$AMSRetailerHost = "mdstgapp03.cscmd.local:2206"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="AMSRetailerHost"]')
+$targetNode.SetAttribute('value',"$AMSRetailerHost")
+$xml.Save($filePath)
+$AMSExternalPath = "/"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="AMSExternalPath"]')
+$targetNode.SetAttribute('value',"$AMSExternalPath")
+$xml.Save($filePath)
+$CreateAccountPage = "/sign-on"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="CreateAccountPage"]')
+$targetNode.SetAttribute('value',"$CreateAccountPage")
+$xml.Save($filePath)
+
+#WebUI
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.WebUI\Web.config'
+$WebServiceUrl = "https://mdstgapp03.cscmd.local:6555/"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="WebServiceUrl"]')
+$targetNode.SetAttribute('value',"$WebServiceUrl")
+$xml.Save($filePath)
+$ReportServerUrl = "http://MDSTGDB02.cscmd.local:8080/reportserver"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ReportServerUrl"]')
+$targetNode.SetAttribute('value',"ReportServerUrl")
+$xml.Save($filePath)
+$ReportServerUserName = "Srv-dbreports"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ReportServerUserName"]')
+$targetNode.SetAttribute('value',"$ReportServerUserName")
+$xml.Save($filePath)
+$ReportServerPassword = "4D4T?Jrr@L`F#Swacdh?"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ReportServerPassword"]')
+$targetNode.SetAttribute('value',"$ReportServerPassword")
+$xml.Save($filePath)
+$ReportServerDomain = "cscmd"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ReportServerDomain"]')
+$targetNode.SetAttribute('value',"$ReportServerDomain")
+$xml.Save($filePath)
+
+#MHAckUpdateStateavailsTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHAckUpdateStateavailsTask\tcore.MHACKUpdateTask.exe.config'
+$dbPrefix = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="dbPrefix"]')
+$targetNode.SetAttribute('value',"$dbPrefix")
+$xml.Save($filePath)
+$FileServerAddress = "sftp03-oma.csgsupport.com"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerAddress"]')
+$targetNode.SetAttribute('value',"$FileServerAddress")
+$xml.Save($filePath)
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$FileServerPwd = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerPwd"]')
+$targetNode.SetAttribute('value',"$FileServerPwd")
+$xml.Save($filePath)
+$InDirectory = "\\mdprdnas02\IntegrityFiles$\CSC\Mailhouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="InDirectory"]')
+$targetNode.SetAttribute('value',"$InDirectory\inStateavail\")
+$xml.Save($filePath)
+$TempDirectory = "\\mdprdnas02\IntegrityFiles$\CSC\Mailhouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="TempDirectory"]')
+$targetNode.SetAttribute('value',"$TempDirectory\temp\")
+$xml.Save($filePath)
+$OtherReportsDirectory = "\\mdprdnas02\IntegrityFiles$\CSC\Mailhouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="OtherReportsDirectory"]')
+$targetNode.SetAttribute('value',"$OtherReportsDirectory\other\reports\")
+$xml.Save($filePath)
+$OtherImagesDirectory = "\\mdprdnas02\IntegrityFiles$\CSC\Mailhouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="OtherImagesDirectory"]')
+$targetNode.SetAttribute('value',"$OtherImagesDirectory\other\images\")
+$xml.Save($filePath)
+$ArchiveDirectory = ""
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory")
+$xml.Save($filePath)
+$FailedDirectory = "\\mdprdnas02\IntegrityFiles$\CSC\Mailhouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FailedDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\failure\")
+$xml.Save($filePath)
+$ReturnedDocsDirectory = "\\mdprdnas02\IntegrityFiles$\CSC\Mailhouse\AckUpdate"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ReturnedDocsDirectory"]')
+$targetNode.SetAttribute('value',"$FailedDirectory\returnedDocs\")
+$xml.Save($filePath)
+$MaxDegreeOfParallel = "4"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="MaxDegreeOfParallel"]')
+$targetNode.SetAttribute('value',"$MaxDegreeOfParallel")
+$xml.Save($filePath)
+
+#MHDocumentCitationExportTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHDocumentCitationExportTask\tcore.MHDocumentCitationExportTask.exe.config'
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\Mailhouse\DocumentExport\Citation"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive\")
+$xml.Save($filePath)
+$imagesLocalDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="imagesLocalDirectory"]')
+$targetNode.SetAttribute('value',"$imagesLocalDirectory\imagesLocal\")
+$xml.Save($filePath)
+$TempDirectory = "C:\CAMS\Mailhouse\DocumentExport\Citation"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="TempDirectory"]')
+$targetNode.SetAttribute('value',"$TempDirectory\temp\")
+$xml.Save($filePath)
+
+#MHDocumentExportTask
+$filePath = '$(System.ArtifactsDirectory)\tfiles\Integrity.sprint.MHDocumentExportTask\tcore.MHDocumentExportTask.exe.config'
+$FileServerUser = "csgmdta"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="FileServerUser"]')
+$targetNode.SetAttribute('value',"$FileServerUser")
+$xml.Save($filePath)
+$TempDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="TempDirectory"]')
+$targetNode.SetAttribute('value',"$TempDirectory\temp\")
+$xml.Save($filePath)
+$ArchiveDirectory = "C:\CAMS\Mailhouse"
+$xml = [xml](Get-Content $filePath)
+$targetNode = $xml.SelectSingleNode('/configuration/appSettings/add[@key="ArchiveDirectory"]')
+$targetNode.SetAttribute('value',"$ArchiveDirectory\archive")
+$xml.Save($filePath)
+
+
+
