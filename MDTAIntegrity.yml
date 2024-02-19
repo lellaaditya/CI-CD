@@ -1,0 +1,107 @@
+name: $(Build.DefinitionName)_version_$(rev:r)_$(Build.SourceBranchName)
+
+parameters:
+  - name: SkipCI 
+    type: boolean 
+    default: true
+
+  - name: Debug 
+    type: boolean 
+    default: false
+
+resources:
+  repositories:
+  - repository: templates
+    type: bitbucket
+    endpoint: chatlaj
+    name: tcoreintegrity/integrity-devops
+    ref: feature/MDTA-Ci-Pipeline
+    
+
+  - repository: integrity
+    type: bitbucket
+    endpoint: chatlaj
+    name: tcoreintegrity/integrity
+
+variables: 
+- group: Vars.Global.Build
+- name: buildPlatform
+  value: Any CPU
+- name: solutionPath
+  value: 'integrity/AMSInternal.sln'
+- name: rootPath
+  value: 'integrity'
+- name: pathToSolutionDir
+  value: ''
+- name: config
+  value: 'config'
+- name: buildConfiguration
+  value: Release
+- name: rootFolderOrFile
+  value: $(Build.ArtifactStagingDirectory)/output
+- name: includeRootFolder
+  value: true
+- name: feedsToUse
+  value: ''
+- name: workingDirectoryFirst
+  value: 'integrity/WebLayer/AngularWebUI'
+- name: gulpFileFirst
+  value: 'integrity/WebLayer/AngularWebUI/gulpfile.js'
+- name: workingDirectorySec
+  value: 'integrity/WebLayer/WebUI_Deploy'
+- name: gulpFileSec
+  value: 'integrity/WebLayer/WebUI_Deploy/gulpfile.js'
+- name: pathToFiles
+  value: 'integrity'
+- name: targetFolder
+  value: '$(Build.ArtifactStagingDirectory)/output'
+
+
+
+
+trigger: 
+- Ci-pipeline-migration
+- Sprint-mdta-dev
+- Sprint-mdta-qa
+- Sprint-mdta-uat
+
+
+
+pr: 
+- Ci-pipeline-migration
+- Sprint-mdta-dev
+- Sprint-mdta-qa
+- Sprint-mdta-uat
+
+
+
+
+
+stages: 
+
+- stage: build
+  displayName: 'CI build'
+  dependsOn: ''
+  jobs:
+  - template: 'Templates/integrity.MDTA.CI.yml@templates'
+    parameters: 
+      msbuildArgs: '/p:DeployOnBuild=True /p:PublishProfile=Release /p:ProfileTransformWebConfigEnabled=True'
+      msbuildConf:  ${{ variables.buildConfiguration }}
+      BuildPlatform:  ${{ variables.buildPlatform }}
+      solutionPath:  ${{ variables.solutionPath }}
+      pathToSolutionDir:  ${{ variables.pathToSolutionDir }}
+      SkipCI: ${{ parameters.SkipCI }}
+      Debug: ${{ parameters.Debug }}
+      config: ${{ variables.config }}
+      nugetConfigPath: ''
+      rootFolderOrFile: ${{ variables.rootFolderOrFile }}
+      includeRootFolder: ${{ variables.includeRootFolder }}
+      feedsToUse: ${{ variables.feedsToUse }}
+      workingDirectoryFirst:  ${{ variables.workingDirectoryFirst }}
+      gulpFileFirst:  ${{ variables.gulpFileFirst }}
+      workingDirectorySec:  ${{ variables.workingDirectorySec }}
+      gulpFileSec:  ${{ variables.gulpFileSec }}
+      pathToFiles:  ${{ variables.pathToFiles }}
+      targetFolder:  ${{ variables.targetFolder }}
+
+
