@@ -38,3 +38,40 @@ steps:
     echo "//$(npmRegistry):_authToken=$(npmToken)" >> .npmrc
   displayName: 'Set up .npmrc'
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+# Read the .npmrc file
+$content = Get-Content -Path .\.npmrc
+
+# Print the content
+Write-Output "Current .npmrc content:"
+Write-Output $content
+
+# Replace the token
+$newToken = "<Your-New-Token>"
+$content = $content -replace "//registry.npmjs.org/:_authToken=.*", "//registry.npmjs.org/:_authToken=$newToken"
+
+# Write the new content back to the .npmrc file
+$content | Out-File -FilePath .\.npmrc
+
+# Print the updated content
+Write-Output "Updated .npmrc content:"
+Get-Content -Path .\.npmrc
+```
